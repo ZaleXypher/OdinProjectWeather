@@ -111,3 +111,7 @@ button.search:hover{
     flex-direction: column;
     gap: .2em;
 }
+
+#location.invalid{
+    outline: 1px red solid;
+}

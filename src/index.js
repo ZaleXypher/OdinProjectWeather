@@ -1,17 +1,25 @@
 import './style.css';
 
 async function getWeather(location, unit) {
-  const weatherLocal = location;
-  const weatherUnit = unit;
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${weatherLocal}?unitGroup=${weatherUnit}&key=QH2MRSYX6DGBHL8ASHC5CKHBE&contentType=json`;
-  const dataFetch = await fetch(url);
-  const weatherData = dataFetch.json();
-  return weatherData;
+  try {
+    const weatherLocal = location;
+    const weatherUnit = unit;
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${weatherLocal}?unitGroup=${weatherUnit}&key=QH2MRSYX6DGBHL8ASHC5CKHBE&contentType=json`;
+    const dataFetch = await fetch(url);
+    const weatherData = dataFetch.json();
+    return weatherData;
+  } catch (error) {
+    console.error(error.message);
+    return 0;
+  }
 }
 
 async function weatherCard(data) {
   const weather = await data;
-  console.log(weather);
+  if (weather === 0) {
+    console.log('Data fetch failed');
+    return 0;
+  }
   const container = document.querySelector('div.container');
 
   const card = document.createElement('div');
@@ -62,5 +70,19 @@ async function weatherCard(data) {
   content.appendChild(wind);
 }
 
+function linkDOM() {
+  const searchButton = document.querySelector('button.search');
+  const search = document.querySelector('input#location');
+  searchButton.addEventListener('click', () => {
+    if (search.value.length < 5) {
+      search.classList.add('invalid');
+    } else {
+      weatherCard(getWeather(search.value, 'metric'));
+      search.classList.remove('invalid');
+    }
+  });
+}
+
+linkDOM();
+
 weatherCard(getWeather('Jakarta', 'metric'));
-weatherCard(getWeather('Washington', 'metric'));
