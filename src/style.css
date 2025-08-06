@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightcyan;
+    box-sizing: border-box;
+    padding: 1em;
+    align-items: center;
+}
+
+.title{
+    font-size: 1.1em;
+    font-weight: 650;
+}
+
+input[type='text'], button{
+    appearance: none;
+}
+
+input[type='text']{
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: .5em;
+}
+
+button.search {
+    color: white;
+    font-weight: 600;
+    border: 1px;
+    border-radius: 1em;
+    padding: .5em;
+    background-color: turquoise;
+    cursor: pointer;
+}
+
+button.search:hover{
+    background-color: aquamarine;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: minmax(300px, 500px);
+    align-self: center;
+    gap: 1em;
+}
+
+.temp::before{
+    content: 'Current Temp : '
+}
+
+.feels::before{
+    content: 'Feels Like : '
+}
+
+.wind::before{
+    content: 'Windspeed : ';
+}
+
+.humid::before{
+    content: 'Humidity : '
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    border-radius: 1.5em;
+    box-sizing: border-box;
+    background-color: darkcyan;
+}
+
+.cityTitle{
+    color: white;
+    background-color: cadetblue;
+    border-radius: 1.5em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 1em;
+    display: grid;
+
+    .city{
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    .time{
+        font-size: .8em;
+        font-weight: 400;
+    }
+
+    .weather{
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        align-self: center;
+        justify-self: end;
+    }
+}
+
+.content{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+}
