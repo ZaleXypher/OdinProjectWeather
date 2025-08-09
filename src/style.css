@@ -48,7 +48,9 @@ button.search:hover{
 
 .container{
     display: grid;
-    grid-template-columns: minmax(300px, 500px);
+    width: 80%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+    justify-content: center;
     align-self: center;
     gap: 1em;
 }
